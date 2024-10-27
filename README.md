@@ -15,7 +15,7 @@
 1. Clonez le dépôt :
 
     ```sh
-    git clone <https://github.com/Michelozzi2/M1.git>
+    git clone <https://github.com/Michelozzi2/Projet_web.git>
     cd projet_web/Projet_login_django
     ```
 
