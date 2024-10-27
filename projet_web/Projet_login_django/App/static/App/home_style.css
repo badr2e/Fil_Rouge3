@@ -1,0 +1,34 @@
+/* home_style.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f4f7; /* Couleur d'arrière-plan */
+    color: #333; /* Couleur du texte */
+    text-align: center;
+    padding: 50px; /* Espace interne autour du contenu */
+}
+
+h2 {
+    font-size: 2.5rem;
+    color: #007bff; /* Couleur du titre */
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+button {
+    background-color: #f44336; /* Rouge */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #d32f2f; /* Rouge foncé */
+  }

@@ -1,0 +1,15 @@
+<!-- App/inventory_table.html -->
+{% for item in items %}
+<tr>
+    <td>{{ item.nom }}</td>
+    <td>{{ item.get_type_display }}</td>
+    <td>{{ item.quantite }}</td>
+    <td>
+        <a href="{% url 'update_item' item.pk %}">Modifier</a>
+        {% if item.type in 'potion plante clé' %}
+            | <a href="{% url 'consume_item' item.pk %}">Consommer</a>
+        {% endif %}
+        | <a href="{% url 'delete_item' item.pk %}">Supprimer</a>
+    </td>
+</tr>
+{% endfor %}

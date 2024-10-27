@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Connexion</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'App/login_style.css' %}">
+  </head>
+  <body>
+    <div class="title-container">
+        <h1>Connexion</h1>
+    </div>
+
+    <div class="form-container">
+        <form method="POST">
+            {% csrf_token %}
+
+            <div class="input-container">
+                <label for="username">Nom d'utilisateur</label>
+                <input type="text" name="username" required />
+            </div>
+
+            <div class="input-container">
+                <label for="password">Mot de passe</label>
+                <input type="password" name="password" required />
+            </div>
+
+            <button type="submit">Connexion</button>
+        </form>
+
+        <div class="signup-container">
+            <p>Pas encore de compte ?</p>
+            <a href="{% url 'signup' %}" class="signup-button">S'inscrire</a>
+        </div>
+
+    {% if messages %}
+        <div class="messages">
+          {% for message in messages %}
+            <div class="message {{ message.tags }}">{{ message }}</div>
+          {% endfor %}
+        </div>
+    {% endif %}
+    </div>
+</body>
+
+</html>

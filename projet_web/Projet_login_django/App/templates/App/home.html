@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenue</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'App/home_style.css' %}">
+</head>
+<body>
+    <h2>Bienvenue {{ user_login }}!</h2>
+    <p>Vous êtes maintenant connecté.</p>
+
+    <!-- Formulaire de déconnexion -->
+    <form method="POST" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button type="submit">Déconnexion</button>
+    </form>
+    <a href="{% url 'inventory_list' %}">Voir la liste des objets</a>
+    
+</body>
+</html>
