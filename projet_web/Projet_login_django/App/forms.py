@@ -1,5 +1,9 @@
 from django import forms  # Importe le module de formulaires de Django
 from .models import User
+from .models import Hero
+from .models import Item
+
+
 
 # Définition d'un formulaire de connexion personnalisé.
 # Ce formulaire contient deux champs : un pour le nom d'utilisateur et un pour le mot de passe.
@@ -27,7 +31,6 @@ class SignUpForm(forms.ModelForm):
         }
     user_password = forms.CharField(widget=forms.PasswordInput)  # Masque le mot de passe
 
-from .models import Item
 
 class ItemForm(forms.ModelForm):
     class Meta:
@@ -42,4 +45,27 @@ class ItemForm(forms.ModelForm):
             'nom': 'Nom de l\'objet',  
             'type': 'Type de l\'objet',                  
             'quantite': 'Quantité',      
+        }
+
+class HeroForm(forms.ModelForm):
+    RACE_CHOICES = [
+        ("Elfe", "Elfe"),
+        ("Orc", "Orc"),
+        ("Humain", "Humain"),
+    ]
+
+    CLASS_CHOICES = [
+        ("Warrior", "Guerrier"),
+        ("Wizard", "Mage"),
+        ("Archer", "Archer"),
+    ]
+
+    race = forms.ChoiceField(choices=RACE_CHOICES, label="Race")
+    hero_class = forms.ChoiceField(choices=CLASS_CHOICES, label="Classe")
+
+    class Meta:
+        model = Hero
+        fields = ['name', 'race', 'hero_class']
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nom du héros'}),
         }

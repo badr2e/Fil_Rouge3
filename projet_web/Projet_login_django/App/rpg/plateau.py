@@ -1,6 +1,6 @@
 import random
-from avatar import Hero, Mobs
-from obstacle import Obstacle  # Importation de la classe Obstacle si utilisée
+from .avatar import Hero, Mobs
+from .obstacle import Obstacle  # Importation de la classe Obstacle si utilisée
 
 class Plateau:
     """Classe pour gérer le plateau de jeu."""

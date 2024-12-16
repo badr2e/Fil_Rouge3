@@ -1,4 +1,4 @@
-from stats import Stat
+from .stats import Stat
 
 class Classe:
     """Classe représentant un type de classe (Wizard, Warrior, etc.)"""

@@ -1,12 +1,12 @@
-from avatar import Hero, Mobs
-from stats import Stat
-from race import Race
-from classe import Classe
-from item import Equipment, Bag, Item
-from quest import Quest
-from versus import Versus  
-from jeu import Jeu
-from plateau import Joueur
+from .avatar import Hero, Mobs
+from .stats import Stat
+from .race import Race
+from .classe import Classe
+from .item import Equipment, Bag, Item
+from .quest import Quest
+from .versus import Versus  
+from .jeu import Jeu
+from .plateau import Joueur
 
 
 def main():
@@ -32,14 +32,14 @@ def main():
     bagHero2 = Bag({"sizeMax": 10, "items": []})
     
     # Création du héros principal
-    hero = Hero({'name': 'Jean', 'race': elfe, 'classe': wizard, 'bag': bagHero1, 'equipment': [], 'element': 'Fire', 'profession': 'Mage'})
+    hero = Hero({'name': 'Jean', 'race': elfe, 'classe': wizard, 'bag': bagHero1, 'equipment': []})
     
     # Création des ennemis
     enemy1 = Mobs({'name': 'Orc1', 'race': orc, 'classe': warrior, 'bag': bagHero1, 'equipment': [], 'element': 'Earth', 'type': 'Soldier'})
     enemy2 = Mobs({'name': 'Orc2', 'race': orc, 'classe': warrior, 'bag': bagHero1, 'equipment': [], 'element': 'Earth', 'type': 'Soldier'})
     
     # Création d’un autre héros pour le mode Versus
-    hero2 = Hero({'name': 'Pierre', 'race': human, 'classe': warrior, 'bag': bagHero2, 'equipment': [], 'element': 'Earth', 'profession': 'Guerrier'})
+    hero2 = Hero({'name': 'Pierre', 'race': human, 'classe': warrior, 'bag': bagHero2, 'equipment': []})
     
     """
     # Lancement de la quête

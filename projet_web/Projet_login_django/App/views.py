@@ -5,6 +5,12 @@ from .models import Item, User
 from django.contrib.auth.hashers import make_password, check_password
 from django.http import JsonResponse
 from django.template.loader import render_to_string
+from django.contrib.auth.decorators import login_required
+from .forms import HeroForm
+from .models import Hero
+from django.contrib.auth.models import AnonymousUser  # Import pour tester l'état de connexion
+
+
 
 
 # Vue pour la page de connexion
@@ -208,3 +214,24 @@ def consume_item(request, item_id):
         messages.error(request, f"L'objet {item.nom} ne peut pas être consommé.",extra_tags='alert-danger')
 
     return redirect('inventory_list')
+
+
+def create_hero(request):
+    user_id = request.session.get('user_id')
+    if not user_id:
+        return redirect('login')  # Redirige si l'utilisateur n'est pas connecté
+
+    user = User.objects.get(pk=user_id)
+
+    if request.method == 'POST':
+        form = HeroForm(request.POST)
+        if form.is_valid():
+            hero = form.save(commit=False)
+            hero.user = user
+            hero.save()
+            return redirect('home')  # Retour à l'accueil après création
+    else:
+        form = HeroForm()
+
+    return render(request, 'App/create_hero.html', {'form': form})
+

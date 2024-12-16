@@ -1,4 +1,4 @@
-from stats import Stat
+from .stats import Stat
 
 class Race:
     """Classe représentant une race (Elfe, Humain, etc.)"""

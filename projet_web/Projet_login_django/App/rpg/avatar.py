@@ -1,7 +1,9 @@
-from stats import Stat
-from item import Bag, Equipment
 import random
 import math
+from .stats import Stat
+from .race import Race
+from .classe import Classe
+from .item import Bag, Equipment
 
 
 
@@ -15,7 +17,7 @@ class Avatar:
         self._classe = targs['classe']
         self._bag = targs['bag']
         self._equipment = targs['equipment']
-        self._element = targs['element']
+        #self._element = targs['element']
         self._lvl = 1
         self._stat = Stat({'strength': 1, 'magic': 1, 'agility': 1, 'speed': 1, 'charisma': 0, 'chance': 0})
         Avatar.id += 1
@@ -97,26 +99,32 @@ class Hero(Avatar):
     def __init__(self, targs):
         super().__init__(targs)
         self._xp = 0
-        self._profession = targs['profession']
 
     def lvl(self):
-        lvl = math.floor(self._xp / 100)  #100 XP nécessaires par niveau
-        if lvl < 1:
-            lvl = 1
-        if lvl > self._lvl:
-            print("### Nouveau niveau atteint ! ###")
-            self.newLvl()
-        self._lvl = lvl  # Met à jour le niveau du héros
-        return lvl
+        """Calcule et met à jour le niveau basé sur l'XP."""
+        # On calcule le nouveau niveau en fonction de l'XP
+        new_lvl = math.floor(self._xp / 100) + 1
+
+        # Si le nouveau niveau est supérieur au niveau actuel
+        while new_lvl > self._lvl:
+            self.newLvl()  # Améliorer les stats pour chaque niveau gagné
+            print(f"### Nouveau niveau atteint : {self._lvl + 1} ###")
+            self._lvl += 1
+
+        return self._lvl
+
 
     def newLvl(self):
-        for stat in self._stat.__dict__:
-            self._stat.__dict__[stat] += 5
+        """Améliore les stats du héros à chaque nouveau niveau."""
+        print("### Appel de newLvl() ###")
+        for stat in self._stat.__dict__.keys():
+            self._stat.__dict__[stat] += 5  # Exemple d'augmentation de stats
         self._life = self._stat.life_point
-        print("### Amélioration des statistiques ###")
+        print(f"Nouvelles stats après montée de niveau : {self._stat.__dict__}")
+
 
     def __str__(self):
-        return f"Héros : {self._nom}, Profession : {self._profession}, Niveau : {self._lvl}, Race : {self._race}, Classe : {self._classe}"
+        return f"Héros : {self._nom}, Niveau : {self._lvl}, Race : {self._race}, Classe : {self._classe}"
 
 class Mobs(Avatar):
     """Classe pour les ennemis"""

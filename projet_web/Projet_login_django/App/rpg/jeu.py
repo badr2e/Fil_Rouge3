@@ -1,5 +1,5 @@
 import random
-from plateau import Plateau, Joueur
+from .plateau import Plateau, Joueur
 
 
 class Jeu:

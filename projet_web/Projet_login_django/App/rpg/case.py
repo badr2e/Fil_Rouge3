@@ -1,4 +1,4 @@
-from obstacle import Obstacle
+from .obstacle import Obstacle
 
 class Case:
     """Classe représentant une case du plateau."""
