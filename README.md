@@ -65,6 +65,8 @@
 - `db.sqlite3` : Fichier de base de données SQLite.
 - `manage.py` : Script de gestion de Django.
 - `Projet_login_django/` : Contient les fichiers de configuration du projet Django.
+- `rpg/` : Contient les fichiers du jeux.
+
 
 ## Fonctionnalités
 
