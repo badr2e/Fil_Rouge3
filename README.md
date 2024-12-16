@@ -3,6 +3,10 @@
 - Michelozzi Matthieu
 - Mirande Clémentine
 
+## Repreneur
+
+- Nicolas Robles
+- Badre El Mourabit
 
 ## Prérequis
 
