@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Choisir un héros</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'App/choose_hero.css' %}">
+
+</head>
+<body>
+    <h1>Choisissez votre héros pour le plateau</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="hero_select">Choisissez votre héros :</label>
+        <select name="hero_id" id="hero_select">
+        {% for hero in heroes %}
+            <option value="{{ hero.id }}">{{ hero.name }} (Lvl {{ hero.level }})</option>
+        {% endfor %}
+        </select>
+        <button type="submit">Valider</button>
+    </form>
+</body>
+</html>

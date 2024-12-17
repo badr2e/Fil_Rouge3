@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Résultats du jeu de plateau</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Résultats du jeu de plateau</h1>
+    <table border="1">
+        <tr>
+            <th>Case</th>
+            <th>Gain</th>
+            <th>Occupants</th>
+        </tr>
+        {% for i, case in plateau_cases|dictsort:"key" %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ case.gain }}</td>
+            <td>
+              {% if case.persos %}
+                  {% for occupant in case.persos %}
+                      {{ occupant.nom }}<br/>
+                  {% endfor %}
+              {% else %}
+                  Libre
+              {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Joueurs</h2>
+    <ul>
+    {% for joueur in joueurs %}
+        <li>{{ joueur.avatar.nom }} - Position : {{ joueur.position }}, Points : {{ joueur.points }}</li>
+    {% endfor %}
+    </ul>
+
+    {% if logs %}
+      <h2>Logs</h2>
+      <pre>
+      {% for line in logs %}
+{{ line }}
+      {% endfor %}
+      </pre>
+    {% endif %}
+
+    <form method="POST" action="{% url 'board_next_turn' %}">
+        {% csrf_token %}
+        <button type="submit">Tour suivant</button>
+    </form>
+</body>
+</html>

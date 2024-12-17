@@ -1,0 +1,79 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f9fa;
+    margin: 2em;
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 1em;
+}
+
+h2 {
+    color: #34495e;
+    margin-top: 2em;
+    margin-bottom: 0.5em;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5em 0;
+}
+
+table th, table td {
+    padding: 0.75em 1em;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+table th {
+    background-color: #e9ecef;
+    color: #495057;
+    font-weight: bold;
+}
+
+table tr:nth-child(even) {
+    background-color: #fdfdfd;
+}
+
+ul {
+    margin-top: 1em;
+    line-height: 1.6;
+    list-style-type: disc;
+    padding-left: 1.5em;
+}
+
+ul li {
+    margin: 0.4em 0;
+}
+
+pre {
+    background-color: #f8f9fa;
+    border: 1px solid #ccc;
+    padding: 1em;
+    white-space: pre-wrap; /* Permet de wrap le texte */
+    font-family: "Courier New", monospace;
+    line-height: 1.4;
+    overflow-x: auto;
+    margin-top: 1em;
+}
+
+/* Pour donner un style aux liens ou boutons, si besoin */
+button, input[type="submit"], a.button {
+    background-color: #3498db;
+    border: none;
+    padding: 0.6em 1em;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+button:hover, input[type="submit"]:hover, a.button:hover {
+    background-color: #2980b9;
+}

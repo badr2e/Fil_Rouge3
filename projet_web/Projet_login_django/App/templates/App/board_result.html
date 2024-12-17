@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Résultats du jeu de plateau</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'App/plateau.css' %}">
+</head>
+<body>
+    <h1>Résultats du jeu de plateau</h1>
+    <table>
+        <tr>
+            <th>Case</th>
+            <th>Gain</th>
+            <th>Obstacle</th>
+            <th>Personnage</th>
+        </tr>
+        {% for i, case in plateau_cases|dictsort:"key" %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ case.gain }}</td>
+            <td>
+            {% if case.obs %}
+                Pénalité = {{ case.obs.penalite }}
+            {% else %}
+                -
+            {% endif %}
+            </td>
+            <td>
+            {% if case.perso %}
+                {{ case.perso.avatar.nom }}
+            {% else %}
+                Libre
+            {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Joueurs finaux</h2>
+    <ul>
+    {% for joueur in joueurs %}
+        <li>{{ joueur.avatar.nom }} - Position : {{ joueur.position }}, Points : {{ joueur.points }}</li>
+    {% endfor %}
+    </ul>
+
+    {% if logs %}
+    <h2>Déroulé du combat</h2>
+    <pre>
+    {% for line in logs %}
+{{ line }}
+    {% endfor %}
+    </pre>
+    {% endif %}
+</body>
+</html>

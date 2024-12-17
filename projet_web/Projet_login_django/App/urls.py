@@ -1,6 +1,6 @@
 from django.urls import path
 from django.contrib.auth import views as auth_views
-from .views import create_hero
+from .views import create_hero , choose_hero_for_board ,start_board_game
 
 
 
@@ -22,4 +22,8 @@ urlpatterns = [
     path('consume/<int:item_id>/', consume_item, name='consume_item'),
     path('inventory/', inventory_list_view, name='inventory_list'),
     path('hero/create/', create_hero, name='create-hero'),
+    path('choose_hero/', choose_hero_for_board, name='choose-hero'),
+    path('start_board_game/', start_board_game, name='start_board_game'),
+    #path('board/', board_view, name='board_view'),
+    #path('board/next_turn/', board_next_turn, name='board_next_turn'),
 ]

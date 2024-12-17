@@ -6,7 +6,7 @@ class Jeu:
     """Classe principale pour gérer le jeu."""
 
     def __init__(self, size=50, nb_obstacles=10, nb_etapes=10):
-        self.plateau = Plateau(size=size, max_obstacles=nb_obstacles)
+        self.plateau = Plateau(size=size, max_monstres=nb_obstacles)
         self.nb_etapes = nb_etapes
         self.joueurs = []
 
@@ -22,8 +22,10 @@ class Jeu:
             return  # Empêche de relancer la partie
 
         print("### Début du jeu ###")
-        self.plateau.run()
+        #self.plateau.run()
+        logs = self.plateau.run()  # renvoie la liste
         print("\nTous les joueurs ont terminé la partie.")
+        return logs  # On le renvoie
 
     def afficher_resultats(self):
         """Afficher les résultats des joueurs."""
@@ -35,3 +37,18 @@ class Jeu:
         print("\nÉtat final du plateau :")
         for case in self.plateau.cases:
             print(case)
+
+    def to_dict(self):
+            return {
+                'plateau': self.plateau.to_dict(),
+                'nb_etapes': self.nb_etapes,
+                'joueurs': [j.to_dict() for j in self.joueurs]
+            }
+
+    @staticmethod
+    def from_dict(data):
+        jeu = Jeu(size=data['plateau']['size'], nb_obstacles=0, nb_etapes=data['nb_etapes'])
+        jeu.plateau = Plateau.from_dict(data['plateau'])
+        # recontruire joueurs
+        jeu.joueurs = [Joueur.from_dict(jdata) for jdata in data['joueurs']]
+        return jeu

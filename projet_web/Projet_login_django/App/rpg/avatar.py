@@ -91,7 +91,10 @@ class Avatar:
         else:
             print(f"PV restants de {self._nom} : {round(self._life)}")
 
-
+        
+    @property
+    def nom(self):
+        return self._nom
 
 
 class Hero(Avatar):
